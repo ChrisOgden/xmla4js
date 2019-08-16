@@ -245,6 +245,7 @@ function _decodeXmlaTagName(tagName) {
 //we don't need this in the browser, it's here when running in environments without a native xhr
 //where the xhr object does not offer a DOM responseXML object.
 function _getElements(parent, list, criteria){
+    if (!parent) return list;
     var childNodes = parent.childNodes;
     if (!childNodes) return list;
     for (var node, i = 0, n = childNodes.length; i < n; i++){
@@ -345,6 +346,7 @@ var _getAttribute = function(node, name){
     }
     else {
         func = function(node, name) {
+            if (!node) return null;
             var attributes = node.attributes;
             if (!attributes) return null;
             for (var attr, i = 0, n = attributes.length; i < n; i++) {
